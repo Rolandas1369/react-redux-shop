@@ -1,4 +1,4 @@
-import WithBookstoreService from "./with-boostore-service";
-import WithBookstoreServicer from "./with-boostore-service";
+import withBookstoreService from "./with-bookstore-service";
 
-export default WithBookstoreServicer;
+
+export { withBookstoreService };
