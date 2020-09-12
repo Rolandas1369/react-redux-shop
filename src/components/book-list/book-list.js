@@ -1,24 +1,35 @@
 import React, { Component } from "react";
 import BookListItem from "../book-list-item";
+import Spinner from '../spinner/Spinner';
 import { connect } from "react-redux";
 import { withBookstoreService } from "../hoc";
-import { booksLoaded } from "../../actions"; 
+import { booksLoaded, booksRequested } from "../../actions"; 
 import "./book-list.css";
 
 class BookList extends Component {
   componentDidMount() {
-    const { bookstoreService } = this.props;
-    const data = bookstoreService.getBooks();
+    const { bookstoreService, booksLoaded, booksRequested  } = this.props;
+    booksRequested()
+    bookstoreService.getBooks().then(
+      (data) => booksLoaded(data)
+    )
+
+    
     
     // forwards action to store
-    this.props.booksLoaded(data);
+    
   }
 
   render() {
-    const { books } = this.props;
+    const { books, loading } = this.props;
+
+    if (loading) {
+      return <Spinner />
+    }
 
     return (
-      <ul>
+
+      <ul className="book-list">
         {books.map((book) => {
           return (
             <li key={book.id}>
@@ -32,13 +43,13 @@ class BookList extends Component {
 }
 
 // what state to use?answ books from stro
-const mapStateToProps = ({ books }) => {
-  return { books };
+const mapStateToProps = ({ books, loading }) => {
+  return { books, loading };
 };
 
 //passes action/function
 const mapDispatchToProps = {
-  booksLoaded
+  booksLoaded, booksRequested
 };
 
 // mounting store, reutrns new componenrn

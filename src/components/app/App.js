@@ -9,19 +9,23 @@
 
 // export default withBookstoreService()(App);
 
-import React, { Component } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./app.css";
 import { HomePage, CartPage } from "../pages";
+import ShopHeader from '../shop-header/shop-header';
 
-const App = () => {
+const App = () => { 
   return (
-    <Switch>
-      {/* Component is passeble without <> */}
-      <Route path="/" component={HomePage} exact />
-      <Route path="/" component={CartPage} />
-    </Switch>
+    <main role="main" className="container">
+      <ShopHeader numItem={5} total={210}/>
+      <Switch>
+        {/* Component is passeble without <> */}
+        <Route path="/" component={HomePage} exact />
+        <Route path="/" component={CartPage} />
+      </Switch>
+    </main>
   );
-};  
+};
 
 export default App;

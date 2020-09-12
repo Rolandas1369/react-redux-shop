@@ -1,0 +1,25 @@
+.shop-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    margin-bottom: 1px solid #e5e5e5;
+}
+
+.shop-header .logo {
+    font-family: "PlayFair Display, Georgia, serif";
+    font-size: 2.5rem;
+    padding-left: 1rem;
+
+}
+
+.shop-header .shopping-chart {
+    align-self: center;
+    font-size: 1.3 rem;
+    padding-right: 1rem;
+}
+
+.shop-header .shopping-chart .cart-icon {
+    font-size: 2.2rem;
+    color: cadetblue;
+    margin-right: 10px;
+}
